@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.splashscreen">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.example.ekse.ListUsers.List_Layout_People">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -30,8 +36,7 @@
 
         <activity
             android:name="com.example.ekse.ekseapp.MapActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <!-- The below is for the splash screen and we need no action bar and the default theme -->
+            android:label="@string/title_activity_maps" /> <!-- The below is for the splash screen and we need no action bar and the default theme -->
         <activity
             android:name="com.example.ekse.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -41,13 +46,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    <activity android:name="com.example.ekse.ekseapp.PermissionsActivity">
-
-    </activity>
-
-        <activity android:name="com.example.ekse.MainActivity">
-
-        </activity>
+        <activity android:name="com.example.ekse.ekseapp.PermissionsActivity"></activity>
+        <activity android:name="com.example.ekse.MainActivity"></activity>
     </application>
 
 </manifest>
