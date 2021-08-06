@@ -8,6 +8,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.splashscreen.R
 
 class PeopleAdapter( val users: ArrayList<User>):RecyclerView.Adapter<PeopleAdapter.MyViewHolder>() {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+
+      val view =  LayoutInflater.from(parent.context).inflate(R.layout.list_view_people,parent,false)
+
+       return MyViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        val user  = users[position]
+        holder.setData(user)
+    }
+
+    override fun getItemCount(): Int {
+        
+        return users.size
+    }
+
     inner class MyViewHolder(ItemView:View):RecyclerView.ViewHolder(ItemView){
 
         fun setData(users :User){
@@ -19,26 +39,7 @@ class PeopleAdapter( val users: ArrayList<User>):RecyclerView.Adapter<PeopleAdap
             Name.text = users.name
             SurName.text = users.surname
             discription.text = users.description
-             kilometer.text = users.kilometer
+            kilometer.text = users.kilometer
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        TODO("Not yet implemented")
-
-      val view =  LayoutInflater.from(parent.context).inflate(R.layout.list_view_people,parent,false)
-
-       return MyViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
-        val user  = users[position]
-        holder.setData(user)
-    }
-
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-        return users.size
     }
 }

@@ -30,24 +30,7 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/AIzaSyBTQa9AJryAUy9ieqPADT6RfVjLB4b_XC0" />
 
-        <activity
-            android:name="com.example.ekse.ekseapp.MapActivity"
-            android:label="@string/title_activity_maps" /> <!-- The below is for the splash screen and we need no action bar and the default theme -->
-        <activity
-            android:name="com.example.ekse.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.example.ekse.ekseapp.PermissionsActivity"></activity>
-        <activity android:name="com.example.ekse.MainActivity"></activity>
     </application>
 
 </manifest>
