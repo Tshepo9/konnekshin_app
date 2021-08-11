@@ -1,36 +1,65 @@
 package com.example.ekse
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.ekse.ListUsers.PeopleAdapter
-import com.example.ekse.ListUsers.User
-import com.example.splashscreen.R
-import com.example.ekse.ListUsers.List_Layout_People
-
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import com.example.splashscreen.databinding.ActivityMainBinding
+import io.getstream.chat.android.client.ChatClient
+import io.getstream.chat.android.client.logger.ChatLogLevel
+import io.getstream.chat.android.client.models.Filters
+import io.getstream.chat.android.client.models.User
+import io.getstream.chat.android.livedata.ChatDomain
+import io.getstream.chat.android.ui.channel.list.viewmodel.ChannelListViewModel
+import io.getstream.chat.android.ui.channel.list.viewmodel.bindView
+import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListViewModelFactory
+import io.getstream.chat.android.ui.channel.list.ChannelListView
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val recyclerView = findViewById<RecyclerView>(R.id.myrecycler )
 
-        val users = ArrayList<User>()
+        // Step 0 - inflate binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
-        users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
-        users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
+        // Step 1 - Set up the client for API calls and the domain for offline storage
+        val client = ChatClient.Builder("b67pax5b2wdq", applicationContext)
+            .logLevel(ChatLogLevel.ALL) // Set to NOTHING in prod
+            .build()
+        ChatDomain.Builder(client, applicationContext).build()
 
-        //create an assign adapter
-        val adapter = PeopleAdapter(users)
-        recyclerView.adapter = adapter
+        // Step 2 - Authenticate and connect the user
+        val user = User(
+            id = "tutorial-droid",
+            extraData = mutableMapOf(
+                "name" to "Tutorial Droid",
+                "image" to "https://bit.ly/2TIt8NR",
+            ),
+        )
+        client.connectUser(
+            user = user,
+            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidHV0b3JpYWwtZHJvaWQifQ.NhEr0hP9W9nwqV7ZkdShxvi02C5PR7SJE7Cs4y7kyqg"
+        ).enqueue()
 
-        findViewById<Button>(R.id.button_test).setOnClickListener{
-            val intent = Intent(this,List_Layout_People::class.java)
-            // start your next activity
-            startActivity(intent)
-        }
+        // Step 3 - Set the channel list filter and order
+        // This can be read as requiring only channels whose "type" is "messaging" AND
+        // whose "members" include our "user.id"
+        val filter = Filters.and(
+            Filters.eq("type", "messaging"),
+            Filters.`in`("members", listOf(user.id))
+        )
+        val viewModelFactory = ChannelListViewModelFactory(filter, ChannelListViewModel.DEFAULT_SORT)
+        val viewModel: ChannelListViewModel by viewModels { viewModelFactory }
+
+        // Step 4 - Connect the ChannelListViewModel to the ChannelListView, loose
+        //          coupling makes it easy to customize
+
+    //    viewModel.bindView(binding.channelListView, this)
+
+       // binding.channelListView.setChannelItemClickListener { channel ->
+            // TODO - start channel activity
+        //}
     }
 }

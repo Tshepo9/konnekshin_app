@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: io.getstream:stream-chat-android-ui-components:4.12.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3b43f53deb17f497a2a6ab93b2862d0e/stream-chat-android-ui-components-4.12.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3b43f53deb17f497a2a6ab93b2862d0e/stream-chat-android-ui-components-4.12.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3b43f53deb17f497a2a6ab93b2862d0e/stream-chat-android-ui-components-4.12.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.getstream/stream-chat-android-ui-components/4.12.1/2608cfca8ee45768c9cab1478ce0c30db3e7111f/stream-chat-android-ui-components-4.12.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.getstream/stream-chat-android-ui-components/4.12.1/7192689f3e16412cb98289e999cfe0008d1415b3/stream-chat-android-ui-components-4.12.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -24,8 +24,9 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\tshepo\AppData\Local\Temp\baseline_person_pin_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\tshepo\AppData\Local\Temp\baseline_message_24.xml" />
                                                 <entry key="opacityPercent" value="80" />
+                                                <entry key="paddingPercent" value="5" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -37,7 +38,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/person_pin/baseline_person_pin_24.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/message/baseline_message_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -69,7 +70,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_location_icon" />
+                                      <entry key="outputName" value="ic_message" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="2a0556" />
                                     </map>
@@ -142,7 +143,18 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\tshepo\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="C:\Users\tshepo\AppData\Local\Temp\baseline_map_24.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/map/baseline_map_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -170,6 +182,11 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="outputName" value="ic_map" />
                                     </map>
                                   </option>
                                 </PersistentState>

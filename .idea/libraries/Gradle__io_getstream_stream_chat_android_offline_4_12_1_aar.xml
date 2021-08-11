@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: io.getstream:stream-chat-android-offline:4.12.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/13e19a54ed4452a061630c7ff763fa46/stream-chat-android-offline-4.12.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/13e19a54ed4452a061630c7ff763fa46/stream-chat-android-offline-4.12.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/13e19a54ed4452a061630c7ff763fa46/stream-chat-android-offline-4.12.1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.getstream/stream-chat-android-offline/4.12.1/6bcee42c36ec8aac4916a237ee88dff94be9c285/stream-chat-android-offline-4.12.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.getstream/stream-chat-android-offline/4.12.1/b42c95345def9d05614eccb8406d466c9a16ab70/stream-chat-android-offline-4.12.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

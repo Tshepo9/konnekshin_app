@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/space1"
+        android:title=""
+    />
+
+    <item android:id="@+id/user"
+        android:title=" View Profile"
+        android:icon="@drawable/ic_user"/>
+
+    <item android:id="@+id/space2"
+        android:title=""
+        />
+    <item android:title="Create Job"
+        android:id="@+id/item1"
+        />
+
+    <item android:title="Favourite"
+        android:id="@+id/item2"/>
+
+
+    <item android:title="About"
+     android:id="@+id/item3"/>
+
+</menu>

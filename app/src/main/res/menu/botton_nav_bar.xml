@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+  <item
+      android:id="@+id/map"
+      android:title="home"
+      android:icon="@drawable/ic_home"/>
+
+  <item
+      android:id="@+id/search"
+      android:title="search"
+      android:icon="@drawable/ic_search"/>
+  <item
+      android:id="@+id/message"
+      android:title="message"
+      android:icon="@drawable/ic_message"
+      android:onClick="onOptionsItemSelected"/>
+
+  <item
+      android:id="@+id/notification"
+      android:title="notification"
+      android:icon="@drawable/ic_notification"/>
+
+  <item
+      android:id="@+id/menubar"
+      android:title="menubar"
+      android:icon="@drawable/ic_menubar"
+      android:onClick="onOptionsItemSelected"/>
+</menu>

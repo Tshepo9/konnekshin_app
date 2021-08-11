@@ -1,21 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ekse.ListUsers.List_Layout_People">
+    tools:context="com.example.ekse.ListUsers.List_Layout_People"
+    android:orientation="vertical"
+    android:id="@+id/drawer_layout"
+    >
+
+
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
+        android:layout_centerHorizontal="true"
+
+        android:text="Work"
+        android:textSize="30dp"
+       ></Switch>
+
+    <TextView
+        android:id="@+id/locationview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="457 fransoff avunue"
+        android:textSize="23dp"
+
+        android:layout_below="@id/switch1"
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myrecycler"
         android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/locationview"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:menu="@menu/botton_nav_bar"
+        android:layout_alignParentBottom="true"/>
+
+
+    <com.google.android.material.navigation.NavigationView
+
+        android:id="@+id/nav_view"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_view"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/bottomNavigationView"
+        android:forceHasOverlappingRendering="false"/>
+
+
+</RelativeLayout>
