@@ -1,65 +1,60 @@
-package com.example.ekse
+package com.example.ekse.messaging
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import com.example.splashscreen.databinding.ActivityMainBinding
-import io.getstream.chat.android.client.ChatClient
-import io.getstream.chat.android.client.logger.ChatLogLevel
-import io.getstream.chat.android.client.models.Filters
-import io.getstream.chat.android.client.models.User
-import io.getstream.chat.android.livedata.ChatDomain
-import io.getstream.chat.android.ui.channel.list.viewmodel.ChannelListViewModel
-import io.getstream.chat.android.ui.channel.list.viewmodel.bindView
-import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListViewModelFactory
-import io.getstream.chat.android.ui.channel.list.ChannelListView
-class MainActivity : AppCompatActivity() {
+import com.example.splashscreen.R
+import com.example.splashscreen.databinding.ActivityChatBinding
+import com.example.splashscreen.databinding.ActivityChatFragmentBinding
+import com.getstream.sdk.chat.viewmodel.MessageInputViewModel
+import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel
+import io.getstream.chat.android.ui.message.input.viewmodel.bindView
+import io.getstream.chat.android.ui.message.list.header.viewmodel.MessageListHeaderViewModel
+import io.getstream.chat.android.ui.message.list.header.viewmodel.bindView
+import io.getstream.chat.android.ui.message.list.viewmodel.bindView
+import io.getstream.chat.android.ui.message.list.viewmodel.factory.MessageListViewModelFactory
+import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel.Mode.Normal
+import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel.Mode.Thread
+import java.nio.channels.Channel
 
-    private lateinit var binding: ActivityMainBinding
+class MainActivity (chanel_id:String): AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    private lateinit var binding: ActivityChatFragmentBinding
+    var id:String=chanel_id
+
+    override fun onCreate(savedInstanceState: Bundle?,) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_chat_fragment)
 
-        // Step 0 - inflate binding
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityChatFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        // grap cid
+        val cid= checkNotNull(intent.getStringExtra(id))
+        // Initialize ViewModel
+        val viewModelheader: MessageListHeaderViewModel by viewModels {
+            MessageListViewModelFactory(id)
+        }
 
-        // Step 1 - Set up the client for API calls and the domain for offline storage
-        val client = ChatClient.Builder("b67pax5b2wdq", applicationContext)
-            .logLevel(ChatLogLevel.ALL) // Set to NOTHING in prod
-            .build()
-        ChatDomain.Builder(client, applicationContext).build()
+// Bind the View and ViewModel
+        viewModelheader.bindView(binding.messageListHeaderView, this)
 
-        // Step 2 - Authenticate and connect the user
-        val user = User(
-            id = "tutorial-droid",
-            extraData = mutableMapOf(
-                "name" to "Tutorial Droid",
-                "image" to "https://bit.ly/2TIt8NR",
-            ),
-        )
-        client.connectUser(
-            user = user,
-            token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidHV0b3JpYWwtZHJvaWQifQ.NhEr0hP9W9nwqV7ZkdShxvi02C5PR7SJE7Cs4y7kyqg"
-        ).enqueue()
+        // 1. Init message model
+        val viewModel: MessageListViewModel by viewModels {
+            MessageListViewModelFactory(id)
+        }
 
-        // Step 3 - Set the channel list filter and order
-        // This can be read as requiring only channels whose "type" is "messaging" AND
-        // whose "members" include our "user.id"
-        val filter = Filters.and(
-            Filters.eq("type", "messaging"),
-            Filters.`in`("members", listOf(user.id))
-        )
-        val viewModelFactory = ChannelListViewModelFactory(filter, ChannelListViewModel.DEFAULT_SORT)
-        val viewModel: ChannelListViewModel by viewModels { viewModelFactory }
+        // 2. Bind view and viewModel
+        viewModel.bindView(binding.messageListView, this)
 
-        // Step 4 - Connect the ChannelListViewModel to the ChannelListView, loose
-        //          coupling makes it easy to customize
+        // Instantiate the ViewModel for a given channel
 
-    //    viewModel.bindView(binding.channelListView, this)
+        val viewModelinput: MessageInputViewModel by viewModels {
+            MessageListViewModelFactory(id) }
+// Bind it with MessageInputView
+        viewModelinput.bindView(binding.messageInputView, this)
 
-       // binding.channelListView.setChannelItemClickListener { channel ->
-            // TODO - start channel activity
-        //}
+
     }
+
+
 }

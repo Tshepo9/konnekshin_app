@@ -58,5 +58,15 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha4'
     //ofline dependecies
     //  implementation "io.getstream:stream-chat-android-offline:$stream_version"
+    //parse sdk
+    implementation "com.github.parse-community.Parse-SDK-Android:parse:1.26.0"
 
 }
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'https://jitpack.io' }
+}
+
+

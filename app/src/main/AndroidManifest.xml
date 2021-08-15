@@ -7,18 +7,39 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="com.example.ekse.DB.AppDb"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Konnekshin"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.ekse.MainActivity"></activity>
-        <activity android:name="com.example.ekse.messaging.chat"></activity>
+        <activity android:name="com.example.ekse.Jobs.CreateJob"></activity>
+
+        <meta-data
+            android:name="com.parse.SERVER_URL"
+            android:value="@string/back4app_server_url" />
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="@string/back4app_app_id" />
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="@string/back4app_client_key" />
+
+        <activity
+            android:name="com.example.ekse.login.SignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.ekse.ListUsers.List_Layout_People"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.ekse.messaging.ChatFragment" />
+        <activity android:name="com.example.ekse.messaging.chat" />
+        <activity
+            android:name="com.example.ekse.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

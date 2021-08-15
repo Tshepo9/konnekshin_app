@@ -10,13 +10,18 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ekse.MainActivity
+import com.example.ekse.Jobs.Createjob
 import com.example.ekse.messaging.chat
+
 import com.example.splashscreen.R
 import com.google.android.material.navigation.NavigationView
+import com.parse.ParseObject
 
 
-class List_Layout_People : AppCompatActivity() {
+
+
+
+class List_Layout_People : AppCompatActivity(),Createjob.CreateJobListener {
 
 
 
@@ -44,7 +49,7 @@ class List_Layout_People : AppCompatActivity() {
         users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
         users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
         users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
-        users.add(User(name = "Tsgedis0",surname = "boshiama",description="eletricity",kilometer = "9km"))
+        users.add(User(name = "Tshedis0",surname = "boshiama",description="eletricity",kilometer = "9km"))
         users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
         users.add(User(name = "Tshepo",surname = "Monene",description="plumber",kilometer = "5km"))
 
@@ -61,12 +66,6 @@ class List_Layout_People : AppCompatActivity() {
 
         }
 
-        //menu bar event listenr
-
-
-
-        //menu bar clicked
-
 
 
 
@@ -77,6 +76,8 @@ class List_Layout_People : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.botton_nav_bar, menu)
+
+        inflater.inflate(R.menu.drawer_view,menu)
         return true
     }
      //code for selecting menu items
@@ -104,9 +105,34 @@ class List_Layout_People : AppCompatActivity() {
 
                 true
             }
+            R.id.createjob -> {
+                // Action goes here
+
+                    val createJob = Createjob()
+                    createJob.show(supportFragmentManager, "Creates a job")
+
+
+
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
 
+
+    }
+
+    override fun ApplyTexts(username: String?, jb: String?, sname: String?, msg: String?) {
+
+        val job = ParseObject("JOB")
+
+        if (username != null) {
+            job.put("name", username)
+        }
+            if (sname != null) {
+                job.put("surname", sname)
+            }
+
+        job.saveInBackground()
 
     }
 }

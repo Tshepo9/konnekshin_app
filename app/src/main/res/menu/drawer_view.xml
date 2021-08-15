@@ -10,11 +10,12 @@
         android:title=" View Profile"
         android:icon="@drawable/ic_user"/>
 
-    <item android:id="@+id/space2"
-        android:title=""
+    <item android:id="@+id/jobSignup"
+        android:title="Signup for job"
         />
     <item android:title="Create Job"
-        android:id="@+id/item1"
+        android:id="@+id/createjob"
+        android:onClick="onOptionsItemSelected"
         />
 
     <item android:title="Favourite"
